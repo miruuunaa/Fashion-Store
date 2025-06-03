@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Hub - Online Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <h1><i class="fas fa-shopping-bag"></i> Fashion Store</h1>
+      </div>
+      <nav class="nav">
+        <button class="nav-btn active" data-category="all">All</button>
+        <button class="nav-btn" data-category="women">Women</button>
+        <button class="nav-btn" data-category="men">Men</button>
+        <button class="nav-btn" data-category="children">Children</button>
+      </nav>
+      <div class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main">
+    <!-- Products Grid -->
+    <div id="productsSection" class="products-section">
+      <div class="container">
+        <h2 id="categoryTitle">All Products</h2>
+        <div class="products-grid" id="productsGrid">
+          <!-- Products will be loaded here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Shopping Cart</h3>
+        <button class="close-cart" onclick="toggleCart()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be loaded here -->
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <strong>Total: $<span id="cartTotal">0.00</span></strong>
+        </div>
+        <button class="checkout-btn" onclick="showCheckout()" id="checkoutBtn">
+          Proceed to Checkout
+        </button>
+      </div>
+    </div>
+
+    <!-- Checkout Section -->
+    <div id="checkoutSection" class="checkout-section hidden">
+      <div class="container">
+        <h2>Checkout</h2>
+        <div class="checkout-content">
+          <div class="checkout-form">
+            <div class="form-section">
+              <h3>Login</h3>
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" id="password" name="password" required>
+                </div>
+              </form>
+            </div>
+
+            <div class="form-section">
+              <h3>Delivery Address</h3>
+              <form id="addressForm">
+                <div class="form-group">
+                  <label for="fullName">Full Name:</label>
+                  <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address:</label>
+                  <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="zipCode">ZIP Code:</label>
+                    <input type="text" id="zipCode" name="zipCode" required>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="country">Country:</label>
+                  <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="IT">Italy</option>
+                    <option value="ES">Spain</option>
+                    <option value="RO">Romania</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div id="orderSummary">
+              <!-- Order items will be displayed here -->
+            </div>
+            <div class="order-total">
+              <strong>Total: $<span id="orderTotal">0.00</span></strong>
+            </div>
+            <button type="button" class="place-order-btn" id="placeOrder()">
+              Place Order
+            </button>
+            <button class="back-btn" onclick="hideCheckout()">
+              Back to Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Confirmation -->
+    <div id="orderConfirmation" class="order-confirmation hidden">
+      <div class="container">
+        <div class="confirmation-content">
+          <i class="fas fa-check-circle"></i>
+          <h2>Order Placed Successfully!</h2>
+          <p>Thank you for your purchase. Your order has been confirmed.</p>
+          <p>Order ID: <span id="orderId"></span></p>
+          <button class="continue-shopping-btn" onclick="continueShopping()">
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner" class="loading-spinner hidden">
+    <div class="spinner"></div>
+  </div>
+</div>
+
+<script src="products.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
